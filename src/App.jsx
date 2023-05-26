@@ -1,43 +1,50 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
+// Custom Hooks and helpers
+import useFetchRandomDog from './hooks/useFetchRandomDog'
+import useFetchBreeds from './hooks/useFetchBreeds'
+import getRandomElement from './utility/getRandomElement'
+
 function App() {
-	const [breeds, setBreeds] = useState([])
+	const [shuffledAnswers, setShuffledAnswers] = useState(null)
+	const allBreeds = useFetchBreeds()
+	const randomDog = useFetchRandomDog()
 
 	useEffect(() => {
-		axios.get('https://dog.ceo/api/breeds/list/all').then((data) => {
-			const breedsObj = data?.data.message
-			const formatted = Object.keys(breedsObj)
-				.map((key) => {
-					if (breedsObj[key].length > 0) {
-						return breedsObj[key].map((sub) => `${sub} ${key}`)
-					} else {
-						return key
-					}
-				})
-				.flat()
-			console.log(breedsObj)
-			console.log(formatted)
-			setBreeds(formatted)
-		})
-	}, [])
+		if (randomDog) {
+			const answers = new Set([randomDog?.breed])
+			while (answers.size < 4) {
+				answers.add(getRandomElement(allBreeds))
+			}
+			const answersArr = Array.from(answers)
+			setShuffledAnswers(shuffleArray(answersArr))
+		}
+	}, [randomDog])
+
+	// Fisher-Yates algorithm
+	const shuffleArray = (array) => {
+		for (let i = array.length - 1; i > 0; i--) {
+			const j = Math.floor(Math.random() * (i + 1))
+			const temp = array[i]
+			array[i] = array[j]
+			array[j] = temp
+		}
+		return array
+	}
 
 	return (
-		<div>
-			All Breeds
-			{breeds.map((breed, i) => {
-				return (
-					<div key={i}>
-						<p>{breed}</p>
-					</div>
-				)
-			})}
-		</div>
+		<>
+			<div>
+				<p>{randomDog?.breed}</p>
+				<img
+					src={randomDog?.imgSrc}
+					alt={randomDog?.breed}
+				/>
+			</div>
+			<div>{shuffledAnswers && shuffledAnswers.map((answer) => <button key={answer}>{answer}</button>)}</div>
+		</>
 	)
 }
 
 export default App
-
-// for (const subBreed of breedsObj[key]) {
-//   return `${subBreed} ${key}`
-// }
