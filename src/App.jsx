@@ -1,13 +1,25 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios'
 
 // Custom Hooks and helpers
 import useFetchRandomDog from './hooks/useFetchRandomDog'
 import useFetchBreeds from './hooks/useFetchBreeds'
 import getRandomElement from './utility/getRandomElement'
 
+// Components
+import Game from './components/Game'
+
+// TODO
+// Check over using fetch hooks - add 'Loading' and 'Error' states to hooks to prevent refetching while already fetching
+// Add correct and incorrect guess events, disable buttons, show 'next dog' button
+// Add tailwind and style after making a mockup
+// Make Entry and Exit Screen components
+// Add ReactRouter DOM and set up routes
+
 function App() {
 	const [shuffledAnswers, setShuffledAnswers] = useState(null)
+	const [guessedCorrectly, setGuessedCorrectly] = useState(false)
+	const [userScore, setUserScore] = useState(0)
+
 	const allBreeds = useFetchBreeds()
 	const randomDog = useFetchRandomDog()
 
@@ -33,16 +45,20 @@ function App() {
 		return array
 	}
 
+	const checkAnswer = (userGuess) => {
+		const result = userGuess === randomDog?.breed
+		setGuessedCorrectly(result)
+		guessedCorrectly && setUserScore((prev) => prev + 1)
+	}
+
 	return (
 		<>
-			<div>
-				<p>{randomDog?.breed}</p>
-				<img
-					src={randomDog?.imgSrc}
-					alt={randomDog?.breed}
-				/>
-			</div>
-			<div>{shuffledAnswers && shuffledAnswers.map((answer) => <button key={answer}>{answer}</button>)}</div>
+			<Game
+				randomDog={randomDog}
+				shuffledAnswers={shuffledAnswers}
+				checkAnswer={checkAnswer}
+				userScore={userScore}
+			/>
 		</>
 	)
 }
