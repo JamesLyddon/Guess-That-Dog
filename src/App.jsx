@@ -9,11 +9,10 @@ import getRandomElement from './utility/getRandomElement'
 import Game from './components/Game'
 
 // TODO
-// Check over using fetch hooks - add 'Loading' and 'Error' states to hooks to prevent refetching while already fetching
-// Add correct and incorrect guess events, disable buttons, show 'next dog' button
-// Add tailwind and style after making a mockup
-// Make Entry and Exit Screen components
-// Add ReactRouter DOM and set up routes
+// Add next dog arrow after guess
+// display score
+// improve style
+// refactor, reduce api calls
 
 function App() {
 	const [shuffledAnswers, setShuffledAnswers] = useState(null)
