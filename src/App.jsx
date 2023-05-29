@@ -47,19 +47,22 @@ function App() {
 
 	const checkAnswer = (userGuess) => {
 		const result = userGuess === randomDog?.breed
+		console.log(userGuess)
+		console.log(randomDog?.breed)
+		console.log(result)
 		setGuessedCorrectly(result)
 		guessedCorrectly && setUserScore((prev) => prev + 1)
 	}
 
 	return (
-		<>
+		<div className='mx-auto h-screen bg-purple-950 grid place-content-center font-sans'>
 			<Game
 				randomDog={randomDog}
 				shuffledAnswers={shuffledAnswers}
 				checkAnswer={checkAnswer}
 				userScore={userScore}
 			/>
-		</>
+		</div>
 	)
 }
 
