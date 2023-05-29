@@ -18,6 +18,7 @@ import Game from './components/Game'
 function App() {
 	const [shuffledAnswers, setShuffledAnswers] = useState(null)
 	const [guessedCorrectly, setGuessedCorrectly] = useState(false)
+	const [showResult, setShowResult] = useState(false)
 	const [userScore, setUserScore] = useState(0)
 
 	const allBreeds = useFetchBreeds()
@@ -45,22 +46,29 @@ function App() {
 		return array
 	}
 
-	const checkAnswer = (userGuess) => {
+	const checkAnswer = (event, userGuess) => {
 		const result = userGuess === randomDog?.breed
 		console.log(userGuess)
 		console.log(randomDog?.breed)
 		console.log(result)
 		setGuessedCorrectly(result)
-		guessedCorrectly && setUserScore((prev) => prev + 1)
+		setShowResult(true)
+		event.target.style.backgroundColor = userGuess === randomDog?.breed ? '#3EC300' : '#D63230'
+		// guessedCorrectly && setUserScore((prev) => prev + 1)
 	}
 
 	return (
-		<div className='mx-auto h-screen bg-purple-950 grid place-content-center font-sans'>
+		<div className='mx-auto h-screen bg-sky-600 grid place-content-center font-sans text-slate-300'>
+			<h1 className='text-4xl uppercase text-center font-extrabold font-sans rounded-xl shadow-xl py-6'>
+				Guess that 🐶!
+			</h1>
 			<Game
 				randomDog={randomDog}
 				shuffledAnswers={shuffledAnswers}
 				checkAnswer={checkAnswer}
 				userScore={userScore}
+				guessedCorrectly={guessedCorrectly}
+				showResult={showResult}
 			/>
 		</div>
 	)
