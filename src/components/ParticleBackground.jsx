@@ -1,10 +1,8 @@
-import { useState, useCallback } from 'react'
+import { useCallback } from 'react'
 import Particles from 'react-tsparticles'
 import { loadFull } from 'tsparticles'
 
 const ParticleBackground = () => {
-	const [count, setCount] = useState(100)
-
 	const init = useCallback(async (engine) => {
 		await loadFull(engine)
 	})
@@ -17,7 +15,7 @@ const ParticleBackground = () => {
 						value: ['#39A9DB'],
 					},
 					number: {
-						value: count,
+						value: 100,
 					},
 					opacity: {
 						value: { min: 0.3, max: 1 },
