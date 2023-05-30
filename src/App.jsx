@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { TbDog } from 'react-icons/tb'
 
 // Custom Hooks and helpers
 import useFetchRandomDog from './hooks/useFetchRandomDog'
@@ -53,7 +54,7 @@ function App() {
 		console.log(result)
 		setGuessedCorrectly(result)
 		setShowResult(true)
-		// guessedCorrectly && setUserScore((prev) => prev + 1)
+		guessedCorrectly && setUserScore((prev) => prev + 1)
 	}
 
 	return (
@@ -62,8 +63,8 @@ function App() {
     bg-gradient-to-b from-french-blue to-cerulean-crayola
     grid place-content-center font-sans text-cultured'
 		>
-			<h1 className='text-4xl uppercase text-center font-extrabold font-sans rounded-xl shadow-xl py-6 bg-gradient-to-r from-french-blue to-cerulean-crayola'>
-				Guess that 🐶!
+			<h1 className='text-2xl uppercase text-center font-extrabold font-sans rounded-xl shadow-xl py-2 bg-gradient-to-r from-french-blue to-cerulean-crayola flex items-center justify-center'>
+				Guess that <TbDog className='ml-2 mt-1' />
 			</h1>
 			<Game
 				randomDog={randomDog}

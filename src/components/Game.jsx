@@ -1,9 +1,12 @@
 import { ImCheckmark } from 'react-icons/im'
 import { ImCross } from 'react-icons/im'
+import { AiFillCaretRight } from 'react-icons/ai'
+import { FaDog } from 'react-icons/Fa'
 
 const Game = ({ randomDog, shuffledAnswers, checkAnswer, userScore, guessedCorrectly, showResult }) => {
 	return (
-		<div className='rounded-xl p-6 bg-gradient-to-r from-french-blue to-cerulean-crayola my-6 shadow-xl relative'>
+		<div className='rounded-xl pb-4 pt-2 px-4 bg-gradient-to-r from-french-blue to-cerulean-crayola my-2 shadow-xl relative'>
+			<div className='flex justify-end m-0 font-semibold pr-2'>Score: {userScore}</div>
 			{showResult && guessedCorrectly && (
 				<ImCheckmark
 					className='absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-100%]'
@@ -25,12 +28,12 @@ const Game = ({ randomDog, shuffledAnswers, checkAnswer, userScore, guessedCorre
 				alt={randomDog?.breed}
 			/>
 
-			<div className=' grid justify-items-center gap-2 mt-4 min-w-300'>
+			<div className=' grid justify-items-center gap-2 mt-4 mb-4 min-w-300'>
 				{shuffledAnswers &&
 					shuffledAnswers.map((answer) => {
 						return (
 							<button
-								className={`bg-gradient-to-tr from-french-blue to-cerulean-crayola w-4/5 p-2 font-semibold text-lg capitalize shadow-xl border-b-4 border-french-blue rounded
+								className={`bg-gradient-to-tr from-french-blue to-cerulean-crayola w-3/5 p-2 font-semibold text-lg capitalize shadow-xl border-b-4 border-french-blue rounded
                 ${
 									showResult && answer === randomDog.breed
 										? 'bg-gradient-to-tr from-kellygreen-400 to-kellygreen-600 border-kellygreen-400'
@@ -50,7 +53,14 @@ const Game = ({ randomDog, shuffledAnswers, checkAnswer, userScore, guessedCorre
 						)
 					})}
 			</div>
-			{/* <h2>{userScore}</h2> */}
+			<div className='h-12'>
+				{showResult && (
+					<div className='animate-slide flex justify-end items-center'>
+						<FaDog size={50} />
+						<AiFillCaretRight size={40} />
+					</div>
+				)}
+			</div>
 		</div>
 	)
 }

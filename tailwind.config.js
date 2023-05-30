@@ -20,6 +20,15 @@ export default {
 					600: '#5DE31D',
 				},
 			},
+			keyframes: {
+				slide: {
+					'0%': { transform: 'translateX(-300px)', filter: 'opacity(0)' },
+					'100%': { transform: 'translateX(0)', filter: 'opacity(1)' },
+				},
+			},
+			animation: {
+				slide: 'slide 1s ease-in-out',
+			},
 		},
 	},
 	plugins: [],
