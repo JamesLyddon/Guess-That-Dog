@@ -3,6 +3,7 @@ import { ImCross } from 'react-icons/im'
 import { AiFillCaretRight } from 'react-icons/ai'
 import { FaDog } from 'react-icons/Fa'
 import { TbDog } from 'react-icons/tb'
+
 const Game = ({
 	randomDog,
 	shuffledAnswers,

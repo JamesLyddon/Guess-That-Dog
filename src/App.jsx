@@ -1,7 +1,5 @@
-import { useState, useEffect, useCallback } from 'react'
-import { TbDog } from 'react-icons/tb'
-import Particles from 'react-tsparticles'
-import { loadFull } from 'tsparticles'
+import { useState, useEffect } from 'react'
+
 // Custom Hooks and helpers
 import useFetchRandomDog from './hooks/useFetchRandomDog'
 import useFetchBreeds from './hooks/useFetchBreeds'
@@ -9,9 +7,9 @@ import getRandomElement from './utility/getRandomElement'
 
 // Components
 import Game from './components/Game'
+import ParticleBackground from './components/ParticleBackground'
 
 function App() {
-	const [count, setCount] = useState(100)
 	const [shuffledAnswers, setShuffledAnswers] = useState(null)
 	const [guessedCorrectly, setGuessedCorrectly] = useState(false)
 	const [showResult, setShowResult] = useState(false)
@@ -23,10 +21,6 @@ function App() {
 
 	const breeds = useFetchBreeds()
 	const dog = useFetchRandomDog(questionCount)
-
-	const init = useCallback(async (engine) => {
-		await loadFull(engine)
-	})
 
 	useEffect(() => {
 		setAllBreeds(breeds)
@@ -74,39 +68,12 @@ function App() {
 
 	return (
 		<>
+			<ParticleBackground />
 			<div
 				className=' mx-auto h-screen  
     bg-gradient-to-b from-french-blue to-cerulean-crayola
     grid place-content-center font-sans text-cultured'
 			>
-				<Particles
-					options={{
-						particles: {
-							color: {
-								value: '#fff',
-							},
-							number: {
-								value: count,
-							},
-							opacity: {
-								value: { min: 0.3, max: 1 },
-							},
-							shape: {
-								type: 'circle',
-							},
-							size: {
-								value: { min: 0.1, max: 2 },
-							},
-							move: {
-								direction: 'bottom-right',
-								enable: true,
-								speed: { min: 3, max: 5 },
-								straight: true,
-							},
-						},
-					}}
-					init={init}
-				/>
 				<Game
 					randomDog={randomDog}
 					shuffledAnswers={shuffledAnswers}
