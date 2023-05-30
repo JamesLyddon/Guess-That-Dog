@@ -44,6 +44,7 @@ const Game = ({
 					shuffledAnswers.map((answer) => {
 						return (
 							<button
+								disabled={showResult}
 								className={`
                 animate-grow
                 bg-gradient-to-tr from-french-blue to-cerulean-crayola w-3/5 p-2 font-semibold text-lg capitalize shadow-xl border-b-4 border-french-blue rounded
