@@ -22,6 +22,7 @@ function App() {
 
 	const allBreeds = useFetchBreeds()
 	const randomDog = useFetchRandomDog()
+	// console.log(randomDog)
 
 	useEffect(() => {
 		if (randomDog) {

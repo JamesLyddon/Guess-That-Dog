@@ -30,7 +30,7 @@ const Game = ({ randomDog, shuffledAnswers, checkAnswer, userScore, guessedCorre
 					shuffledAnswers.map((answer) => {
 						return (
 							<button
-								className='bg-gradient-to-tr from-french-blue to-cerulean-crayola rounded-full w-4/5 p-2 font-semibold text-lg capitalize shadow-xl'
+								className='transition ease-in-out delay-150 bg-blue-500 bg-gradient-to-tr from-french-blue to-cerulean-crayola hover:bg-gradient-to-tl from-french-blue to-cerulean-crayola w-4/5 p-2 font-semibold text-lg capitalize shadow-xl border-b-4 border-french-blue rounded duration-300'
 								style={showResult && answer === randomDog.breed ? { backgroundColor: '#3EC300' } : {}}
 								key={answer}
 								onClick={(event) => checkAnswer(event, answer)}
@@ -46,3 +46,5 @@ const Game = ({ randomDog, shuffledAnswers, checkAnswer, userScore, guessedCorre
 }
 
 export default Game
+
+// className='transition ease-in-out delay-150 bg-blue-500 bg-gradient-to-tr from-french-blue to-cerulean-crayola hover:bg-gradient-to-tl from-french-blue to-cerulean-crayola w-4/5 p-2 font-semibold text-lg capitalize shadow-xl border-b-4 border-french-blue rounded duration-300'
