@@ -34,6 +34,11 @@ export default {
 					'50%': { filter: 'opacity(0)' },
 					'100%': { filter: 'opacity(1)' },
 				},
+				jumpUp: {
+					'0%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-10px)' },
+					'100%': { transform: 'translateY(0)' },
+				},
 			},
 			animation: {
 				slide: 'slide 0.5s ease-out',
