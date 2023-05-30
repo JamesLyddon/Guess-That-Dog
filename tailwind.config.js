@@ -4,18 +4,13 @@ export default {
 	theme: {
 		extend: {
 			colors: {
-				transparent: 'transparent',
-				current: 'currentColor',
+				cultured: '#F0F6F6',
+				'french-blue': '#1C77C3',
+				'cerulean-crayola': '#39A9DB',
+				'pacific-blue': '#40BCD8',
+				'deep-saffron': '#F39237',
 				'persian-red': '#D63230',
 				kellygreen: '#3EC300',
-				white: '#ffffff',
-				purple: '#3f3cbb',
-				midnight: '#121063',
-				metal: '#565584',
-				tahiti: '#3ab7bf',
-				silver: '#ecebff',
-				'bubble-gum': '#ff77e9',
-				bermuda: '#78dcca',
 			},
 		},
 	},

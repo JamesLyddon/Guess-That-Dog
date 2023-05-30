@@ -3,7 +3,7 @@ import { ImCross } from 'react-icons/im'
 
 const Game = ({ randomDog, shuffledAnswers, checkAnswer, userScore, guessedCorrectly, showResult }) => {
 	return (
-		<div className='rounded-xl p-6 bg-sky-600 my-6 shadow-xl relative'>
+		<div className='rounded-xl p-6 bg-gradient-to-r from-french-blue to-cerulean-crayola my-6 shadow-xl relative'>
 			{showResult && guessedCorrectly && (
 				<ImCheckmark
 					className='absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-100%]'
@@ -30,7 +30,7 @@ const Game = ({ randomDog, shuffledAnswers, checkAnswer, userScore, guessedCorre
 					shuffledAnswers.map((answer) => {
 						return (
 							<button
-								className='bg-blue-500 rounded-full w-4/5 p-2 font-semibold text-lg capitalize shadow-xl'
+								className='bg-gradient-to-tr from-french-blue to-cerulean-crayola rounded-full w-4/5 p-2 font-semibold text-lg capitalize shadow-xl'
 								style={showResult && answer === randomDog.breed ? { backgroundColor: '#3EC300' } : {}}
 								key={answer}
 								onClick={(event) => checkAnswer(event, answer)}

@@ -57,8 +57,12 @@ function App() {
 	}
 
 	return (
-		<div className='mx-auto h-screen bg-sky-600 grid place-content-center font-sans text-slate-300'>
-			<h1 className='text-4xl uppercase text-center font-extrabold font-sans rounded-xl shadow-xl py-6'>
+		<div
+			className='mx-auto h-screen  
+    bg-gradient-to-b from-french-blue to-cerulean-crayola
+    grid place-content-center font-sans text-cultured'
+		>
+			<h1 className='text-4xl uppercase text-center font-extrabold font-sans rounded-xl shadow-xl py-6 bg-gradient-to-r from-french-blue to-cerulean-crayola'>
 				Guess that 🐶!
 			</h1>
 			<Game
