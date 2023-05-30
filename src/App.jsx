@@ -21,9 +21,18 @@ function App() {
 	const [showResult, setShowResult] = useState(false)
 	const [userScore, setUserScore] = useState(0)
 
-	const allBreeds = useFetchBreeds()
-	const randomDog = useFetchRandomDog()
-	// console.log(randomDog)
+	const [allBreeds, setAllBreeds] = useState()
+	const [randomDog, setRandomDog] = useState()
+
+	// const allBreeds = useFetchBreeds()
+	// const randomDog = useFetchRandomDog()
+	const breeds = useFetchBreeds()
+	const dog = useFetchRandomDog()
+
+	useEffect(() => {
+		setAllBreeds(breeds)
+		setRandomDog(dog)
+	}, [breeds, dog])
 
 	useEffect(() => {
 		if (randomDog) {
@@ -54,16 +63,16 @@ function App() {
 		console.log(result)
 		setGuessedCorrectly(result)
 		setShowResult(true)
-		guessedCorrectly && setUserScore((prev) => prev + 1)
+		result && setUserScore((prev) => prev + 1)
 	}
 
 	return (
 		<div
-			className='mx-auto h-screen  
+			className=' mx-auto h-screen  
     bg-gradient-to-b from-french-blue to-cerulean-crayola
     grid place-content-center font-sans text-cultured'
 		>
-			<h1 className='text-2xl uppercase text-center font-extrabold font-sans rounded-xl shadow-xl py-2 bg-gradient-to-r from-french-blue to-cerulean-crayola flex items-center justify-center'>
+			<h1 className='animate-fadeInMedium text-2xl uppercase text-center font-extrabold font-sans rounded-xl shadow-xl py-2 bg-gradient-to-r from-french-blue to-cerulean-crayola flex items-center justify-center'>
 				Guess that <TbDog className='ml-2 mt-1' />
 			</h1>
 			<Game
