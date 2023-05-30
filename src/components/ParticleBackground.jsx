@@ -46,12 +46,12 @@ const ParticleBackground = () => {
 						},
 					},
 					size: {
-						value: { min: 0.1, max: 50 },
+						value: { min: 0.1, max: 20 },
 					},
 					move: {
-						direction: 'top-right',
+						direction: 'right',
 						enable: true,
-						speed: { min: 3, max: 5 },
+						speed: { min: 1, max: 3 },
 						straight: false,
 					},
 					rotate: {
@@ -62,7 +62,7 @@ const ParticleBackground = () => {
 						direction: 'random',
 						animation: {
 							enable: true,
-							speed: 10,
+							speed: { min: 3, max: 5 },
 						},
 					},
 					tilt: {
@@ -74,7 +74,7 @@ const ParticleBackground = () => {
 						},
 						animation: {
 							enable: true,
-							speed: 10,
+							speed: { min: 3, max: 5 },
 						},
 					},
 					roll: {
@@ -84,8 +84,8 @@ const ParticleBackground = () => {
 						},
 						enable: true,
 						speed: {
-							min: 5,
-							max: 15,
+							min: 3,
+							max: 5,
 						},
 					},
 				},
