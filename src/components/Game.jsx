@@ -3,10 +3,21 @@ import { ImCross } from 'react-icons/im'
 import { AiFillCaretRight } from 'react-icons/ai'
 import { FaDog } from 'react-icons/Fa'
 
-const Game = ({ randomDog, shuffledAnswers, checkAnswer, userScore, guessedCorrectly, showResult }) => {
+const Game = ({
+	randomDog,
+	shuffledAnswers,
+	checkAnswer,
+	userScore,
+	guessedCorrectly,
+	showResult,
+	nextDog,
+	questionCount,
+}) => {
 	return (
 		<div className='animate-fadeInSlow rounded-xl pb-4 pt-2 px-4 bg-gradient-to-r from-french-blue to-cerulean-crayola my-2 shadow-xl relative'>
-			<div className='flex justify-end m-0 font-semibold pr-2'>Score: {userScore}</div>
+			<div className='flex justify-end m-0 font-semibold pr-2'>
+				Score: {userScore}/{questionCount}
+			</div>
 			{showResult && guessedCorrectly && (
 				<ImCheckmark
 					className='animate-fadeInFast absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-100%]'
@@ -48,19 +59,22 @@ const Game = ({ randomDog, shuffledAnswers, checkAnswer, userScore, guessedCorre
 								}
                 `}
 								key={answer}
-								onClick={(event) => checkAnswer(event, answer)}
+								onClick={() => checkAnswer(answer)}
 							>
 								{answer}
 							</button>
 						)
 					})}
 			</div>
-			<div className='h-12'>
+			<div className='h-12 flex justify-end'>
 				{showResult && (
-					<div className='animate-slide flex justify-end items-center'>
+					<button
+						className='animate-slide flex items-center cursor'
+						onClick={nextDog}
+					>
 						<FaDog size={50} />
 						<AiFillCaretRight size={40} />
-					</div>
+					</button>
 				)}
 			</div>
 		</div>
@@ -68,5 +82,3 @@ const Game = ({ randomDog, shuffledAnswers, checkAnswer, userScore, guessedCorre
 }
 
 export default Game
-
-// hover:bg-gradient-to-tl from-french-blue to-cerulean-crayola

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
-const useFetchRandomDog = () => {
+const useFetchRandomDog = (questionCount) => {
 	const [currentDog, setCurrentDog] = useState()
 
 	useEffect(() => {
@@ -9,7 +9,7 @@ const useFetchRandomDog = () => {
 			const formatted = { breed: formatDogName(data?.data), imgSrc: data?.data.message }
 			setCurrentDog(formatted)
 		})
-	}, [])
+	}, [questionCount])
 
 	function formatDogName(unformattedObj) {
 		return unformattedObj.message.split('/')[4].split('-').reverse().join(' ')

@@ -9,12 +9,6 @@ import getRandomElement from './utility/getRandomElement'
 // Components
 import Game from './components/Game'
 
-// TODO
-// Add next dog arrow after guess
-// display score
-// improve style
-// refactor, reduce api calls
-
 function App() {
 	const [shuffledAnswers, setShuffledAnswers] = useState(null)
 	const [guessedCorrectly, setGuessedCorrectly] = useState(false)
@@ -23,11 +17,10 @@ function App() {
 
 	const [allBreeds, setAllBreeds] = useState()
 	const [randomDog, setRandomDog] = useState()
+	const [questionCount, setQuestionCount] = useState(1)
 
-	// const allBreeds = useFetchBreeds()
-	// const randomDog = useFetchRandomDog()
 	const breeds = useFetchBreeds()
-	const dog = useFetchRandomDog()
+	const dog = useFetchRandomDog(questionCount)
 
 	useEffect(() => {
 		setAllBreeds(breeds)
@@ -35,14 +28,9 @@ function App() {
 	}, [breeds, dog])
 
 	useEffect(() => {
-		if (randomDog) {
-			const answers = new Set([randomDog?.breed])
-			while (answers.size < 4) {
-				answers.add(getRandomElement(allBreeds))
-			}
-			const answersArr = Array.from(answers)
-			setShuffledAnswers(shuffleArray(answersArr))
-		}
+		generateAnswers()
+		setShowResult(false)
+		setGuessedCorrectly(false)
 	}, [randomDog])
 
 	// Fisher-Yates algorithm
@@ -56,14 +44,26 @@ function App() {
 		return array
 	}
 
-	const checkAnswer = (event, userGuess) => {
+	const generateAnswers = () => {
+		if (randomDog) {
+			const answers = new Set([randomDog?.breed])
+			while (answers.size < 4) {
+				answers.add(getRandomElement(allBreeds))
+			}
+			const answersArr = Array.from(answers)
+			setShuffledAnswers(shuffleArray(answersArr))
+		}
+	}
+
+	const checkAnswer = (userGuess) => {
 		const result = userGuess === randomDog?.breed
-		console.log(userGuess)
-		console.log(randomDog?.breed)
-		console.log(result)
 		setGuessedCorrectly(result)
 		setShowResult(true)
 		result && setUserScore((prev) => prev + 1)
+	}
+
+	const nextDog = () => {
+		setQuestionCount((prevCount) => prevCount + 1)
 	}
 
 	return (
@@ -82,6 +82,8 @@ function App() {
 				userScore={userScore}
 				guessedCorrectly={guessedCorrectly}
 				showResult={showResult}
+				questionCount={questionCount}
+				nextDog={nextDog}
 			/>
 		</div>
 	)
