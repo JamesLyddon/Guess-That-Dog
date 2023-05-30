@@ -53,7 +53,6 @@ function App() {
 		console.log(result)
 		setGuessedCorrectly(result)
 		setShowResult(true)
-		event.target.style.backgroundColor = userGuess === randomDog?.breed ? '#3EC300' : '#D63230'
 		// guessedCorrectly && setUserScore((prev) => prev + 1)
 	}
 
