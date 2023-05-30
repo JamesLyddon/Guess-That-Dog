@@ -2,7 +2,7 @@ import { ImCheckmark } from 'react-icons/im'
 import { ImCross } from 'react-icons/im'
 import { AiFillCaretRight } from 'react-icons/ai'
 import { FaDog } from 'react-icons/Fa'
-
+import { TbDog } from 'react-icons/tb'
 const Game = ({
 	randomDog,
 	shuffledAnswers,
@@ -15,6 +15,9 @@ const Game = ({
 }) => {
 	return (
 		<div className='animate-fadeInSlow rounded-xl pb-4 pt-2 px-4 bg-gradient-to-r from-french-blue to-cerulean-crayola my-2 shadow-xl relative'>
+			<h1 className='animate-fadeInMedium text-2xl uppercase text-center font-extrabold font-sans py-2  flex items-center justify-center shadow-xl rounded-full'>
+				Guess that <TbDog className='ml-2 mt-1' />
+			</h1>
 			<div className='flex justify-end m-0 font-semibold pr-2'>
 				Score: {userScore}/{questionCount}
 			</div>

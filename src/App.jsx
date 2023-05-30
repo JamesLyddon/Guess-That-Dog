@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { TbDog } from 'react-icons/tb'
-
+import Particles from 'react-tsparticles'
+import { loadFull } from 'tsparticles'
 // Custom Hooks and helpers
 import useFetchRandomDog from './hooks/useFetchRandomDog'
 import useFetchBreeds from './hooks/useFetchBreeds'
@@ -10,6 +11,7 @@ import getRandomElement from './utility/getRandomElement'
 import Game from './components/Game'
 
 function App() {
+	const [count, setCount] = useState(100)
 	const [shuffledAnswers, setShuffledAnswers] = useState(null)
 	const [guessedCorrectly, setGuessedCorrectly] = useState(false)
 	const [showResult, setShowResult] = useState(false)
@@ -21,6 +23,10 @@ function App() {
 
 	const breeds = useFetchBreeds()
 	const dog = useFetchRandomDog(questionCount)
+
+	const init = useCallback(async (engine) => {
+		await loadFull(engine)
+	})
 
 	useEffect(() => {
 		setAllBreeds(breeds)
@@ -67,25 +73,52 @@ function App() {
 	}
 
 	return (
-		<div
-			className=' mx-auto h-screen  
+		<>
+			<div
+				className=' mx-auto h-screen  
     bg-gradient-to-b from-french-blue to-cerulean-crayola
     grid place-content-center font-sans text-cultured'
-		>
-			<h1 className='animate-fadeInMedium text-2xl uppercase text-center font-extrabold font-sans rounded-xl shadow-xl py-2 bg-gradient-to-r from-french-blue to-cerulean-crayola flex items-center justify-center'>
-				Guess that <TbDog className='ml-2 mt-1' />
-			</h1>
-			<Game
-				randomDog={randomDog}
-				shuffledAnswers={shuffledAnswers}
-				checkAnswer={checkAnswer}
-				userScore={userScore}
-				guessedCorrectly={guessedCorrectly}
-				showResult={showResult}
-				questionCount={questionCount}
-				nextDog={nextDog}
-			/>
-		</div>
+			>
+				<Particles
+					options={{
+						particles: {
+							color: {
+								value: '#fff',
+							},
+							number: {
+								value: count,
+							},
+							opacity: {
+								value: { min: 0.3, max: 1 },
+							},
+							shape: {
+								type: 'circle',
+							},
+							size: {
+								value: { min: 0.1, max: 2 },
+							},
+							move: {
+								direction: 'bottom-right',
+								enable: true,
+								speed: { min: 3, max: 5 },
+								straight: true,
+							},
+						},
+					}}
+					init={init}
+				/>
+				<Game
+					randomDog={randomDog}
+					shuffledAnswers={shuffledAnswers}
+					checkAnswer={checkAnswer}
+					userScore={userScore}
+					guessedCorrectly={guessedCorrectly}
+					showResult={showResult}
+					questionCount={questionCount}
+					nextDog={nextDog}
+				/>
+			</div>
+		</>
 	)
 }
 
