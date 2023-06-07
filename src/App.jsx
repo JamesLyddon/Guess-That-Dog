@@ -96,21 +96,21 @@ function App() {
 						options: {
 							image: [
 								{
-									src: '/dog1.svg',
+									src: './dog1.svg',
 								},
 								{
-									src: '/dog2.svg',
+									src: './dog2.svg',
 								},
 								{
-									src: '/dog3.svg',
+									src: './dog3.svg',
 								},
 								{
-									src: '/dog4.svg',
+									src: './dog4.svg',
 								},
 								{
-									src: '/dog5.svg',
+									src: './dog5.svg',
 								},
-								{ src: '/dog6.svg' },
+								{ src: './dog6.svg' },
 							],
 						},
 					},
