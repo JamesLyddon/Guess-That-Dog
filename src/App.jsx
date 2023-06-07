@@ -9,7 +9,14 @@ import getRandomElement from './utility/getRandomElement'
 
 // Components
 import Game from './components/Game'
-// import ParticleBackground from './components/ParticleBackground'
+
+// SVG images
+import dog1 from './assets/images/dog1.svg'
+import dog2 from './assets/images/dog2.svg'
+import dog3 from './assets/images/dog3.svg'
+import dog4 from './assets/images/dog4.svg'
+import dog5 from './assets/images/dog5.svg'
+import dog6 from './assets/images/dog6.svg'
 
 function App() {
 	const [shuffledAnswers, setShuffledAnswers] = useState(null)
@@ -96,21 +103,21 @@ function App() {
 						options: {
 							image: [
 								{
-									src: './dog1.svg',
+									src: dog1,
 								},
 								{
-									src: './dog2.svg',
+									src: dog2,
 								},
 								{
-									src: './dog3.svg',
+									src: dog3,
 								},
 								{
-									src: './dog4.svg',
+									src: dog4,
 								},
 								{
-									src: './dog5.svg',
+									src: dog5,
 								},
-								{ src: './dog6.svg' },
+								{ src: dog6 },
 							],
 						},
 					},
