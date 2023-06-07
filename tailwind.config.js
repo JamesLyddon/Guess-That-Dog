@@ -22,7 +22,7 @@ export default {
 			},
 			keyframes: {
 				slide: {
-					'0%': { transform: 'translateX(-300px)', filter: 'opacity(0)' },
+					'0%': { transform: 'translateX(-200px)', filter: 'opacity(0)' },
 					'100%': { transform: 'translateX(0)', filter: 'opacity(1)' },
 				},
 				grow: {

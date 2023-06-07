@@ -24,15 +24,15 @@ const Game = ({
 			</div>
 			{showResult && guessedCorrectly && (
 				<ImCheckmark
-					className='animate-fadeInFast absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-100%]'
-					size={250}
+					className='animate-fadeInFast absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-80%]'
+					size={150}
 					color='#3EC300'
 				/>
 			)}
 			{showResult && !guessedCorrectly && (
 				<ImCross
-					className='animate-fadeInFast absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-100%]'
-					size={250}
+					className='animate-fadeInFast fixed top-1/2 left-1/2 translate-x-[-50%] translate-y-[-80%]'
+					size={150}
 					color='#D63230'
 				/>
 			)}
