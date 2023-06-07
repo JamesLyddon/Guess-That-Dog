@@ -43,7 +43,7 @@ export default {
 			animation: {
 				slide: 'slide 0.5s ease-out',
 				grow: 'grow 0.5s ease-in-out',
-				fadeInSlow: 'fadeIn 3s ease-in-out',
+				fadeInSlow: 'fadeIn 1s ease-in-out',
 				fadeInMedium: 'fadeIn 0.5s ease-in-out',
 				fadeInFast: 'fadeIn 0.25s ease-in-out',
 			},

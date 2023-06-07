@@ -14,7 +14,7 @@ const Game = ({
 	questionCount,
 }) => {
 	return (
-		<div className=' animate-fadeInSlow rounded-xl pb-2 pt-2 px-4 bg-gradient-to-r from-french-blue to-cerulean-crayola my-2 shadow-xl relative'>
+		<div className='h-[29rem] w-64 animate-fadeInSlow rounded-xl pb-2 pt-2 px-4 bg-gradient-to-r from-french-blue to-cerulean-crayola my-2 shadow-xl relative'>
 			<h1 className='animate-fadeInMedium text-lg uppercase text-center font-semibold font-sans py-1  flex items-center justify-center shadow-xl rounded-lg'>
 				Guess that <TbDog className='ml-1 mt-1' />
 			</h1>
@@ -37,7 +37,7 @@ const Game = ({
 			)}
 
 			<img
-				className='animate-fadeInSlow object-cover w-48 h-48 m-auto rounded-lg shadow-xl'
+				className='animate-fadeInSlow object-cover h-56 w-56 m-auto rounded-lg shadow-xl'
 				src={randomDog?.imgSrc}
 				alt={randomDog?.breed}
 			/>
@@ -50,7 +50,7 @@ const Game = ({
 								disabled={showResult}
 								className={`
                 animate-grow
-                bg-gradient-to-tr from-french-blue to-cerulean-crayola w-full p-0 font-light text-sm capitalize shadow-xl border-b-4 border-french-blue rounded
+                bg-gradient-to-tr from-french-blue to-cerulean-crayola w-full p-0 font-light text-lg capitalize shadow-xl border-b-4 border-french-blue rounded
                 ${
 									showResult && answer === randomDog.breed
 										? 'bg-gradient-to-tr from-kellygreen-400 to-kellygreen-600 border-kellygreen-400'
@@ -70,10 +70,10 @@ const Game = ({
 						)
 					})}
 			</div>
-			<div className='h-6 flex justify-end'>
+			<div className='h-4 flex justify-end'>
 				{showResult && (
 					<button
-						className='animate-slide flex items-center cursor'
+						className='animate-slide flex items-center cursor mt-4'
 						onClick={nextDog}
 					>
 						<AiFillCaretRight size={20} />
