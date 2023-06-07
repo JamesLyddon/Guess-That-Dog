@@ -7,7 +7,7 @@ import getRandomElement from './utility/getRandomElement'
 
 // Components
 import Game from './components/Game'
-import ParticleBackground from './components/ParticleBackground'
+// import ParticleBackground from './components/ParticleBackground'
 
 function App() {
 	const [shuffledAnswers, setShuffledAnswers] = useState(null)
@@ -73,7 +73,7 @@ function App() {
     bg-gradient-to-b from-french-blue to-cerulean-crayola
     grid place-content-center font-sans text-cultured'
 			>
-      <ParticleBackground />
+      {/* <ParticleBackground /> */}
 				<Game
 					randomDog={randomDog}
 					shuffledAnswers={shuffledAnswers}
