@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
-
+import { useCallback } from 'react'
+import Particles from 'react-particles'
+import { loadFull } from 'tsparticles'
 // Custom Hooks and helpers
 import useFetchRandomDog from './hooks/useFetchRandomDog'
 import useFetchBreeds from './hooks/useFetchBreeds'
@@ -18,6 +20,10 @@ function App() {
 	const [allBreeds, setAllBreeds] = useState()
 	const [randomDog, setRandomDog] = useState()
 	const [questionCount, setQuestionCount] = useState(1)
+
+  const init = useCallback(async (engine) => {
+		await loadFull(engine)
+	}, [])
 
 	const breeds = useFetchBreeds()
 	const dog = useFetchRandomDog(questionCount)
@@ -73,7 +79,88 @@ function App() {
     bg-gradient-to-b from-french-blue to-cerulean-crayola
     grid place-content-center font-sans text-cultured'
 			>
-      {/* <ParticleBackground /> */}
+      <Particles
+			options={{
+				particles: {
+					color: {
+						value: ['#39A9DB'],
+					},
+					number: {
+						value: 100,
+					},
+					opacity: {
+						value: { min: 0.3, max: 1 },
+					},
+					shape: {
+						type: ['image', 'image'],
+						options: {
+							image: [
+								{
+									src: '/dog1.svg',
+								},
+								{
+									src: '/dog2.svg',
+								},
+								{
+									src: '/dog3.svg',
+								},
+								{
+									src: '/dog4.svg',
+								},
+								{
+									src: '/dog5.svg',
+								},
+								{ src: '/dog6.svg' },
+							],
+						},
+					},
+					size: {
+						value: { min: 0.1, max: 20 },
+					},
+					move: {
+						direction: 'right',
+						enable: true,
+						speed: { min: 1, max: 3 },
+						straight: false,
+					},
+					rotate: {
+						value: {
+							min: 0,
+							max: 360,
+						},
+						direction: 'random',
+						animation: {
+							enable: true,
+							speed: { min: 3, max: 5 },
+						},
+					},
+					tilt: {
+						direction: 'random',
+						enable: true,
+						value: {
+							min: 0,
+							max: 360,
+						},
+						animation: {
+							enable: true,
+							speed: { min: 3, max: 5 },
+						},
+					},
+					roll: {
+						darken: {
+							enable: true,
+							value: 5,
+						},
+						enable: true,
+						speed: {
+							min: 3,
+							max: 5,
+						},
+					},
+				},
+			}}
+			init={init}
+		/>
 				<Game
 					randomDog={randomDog}
 					shuffledAnswers={shuffledAnswers}
