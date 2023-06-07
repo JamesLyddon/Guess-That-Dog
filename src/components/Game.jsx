@@ -1,7 +1,6 @@
 import { ImCheckmark } from 'react-icons/im'
 import { ImCross } from 'react-icons/im'
 import { AiFillCaretRight } from 'react-icons/ai'
-import { FaDog } from 'react-icons/Fa'
 import { TbDog } from 'react-icons/tb'
 
 const Game = ({
@@ -77,7 +76,6 @@ const Game = ({
 						className='animate-slide flex items-center cursor'
 						onClick={nextDog}
 					>
-						<FaDog size={20} />
 						<AiFillCaretRight size={20} />
 					</button>
 				)}
