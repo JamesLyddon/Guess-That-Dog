@@ -7,6 +7,7 @@ import getRandomElement from './utility/getRandomElement'
 
 // Components
 import Game from './components/Game'
+import ParticleBackground from './components/ParticleBackground'
 
 function App() {
 	const [shuffledAnswers, setShuffledAnswers] = useState(null)
@@ -67,6 +68,7 @@ function App() {
 
 	return (
 		<>
+    			<ParticleBackground />
 			<div
 				className=' mx-auto h-screen  
     bg-gradient-to-b from-french-blue to-cerulean-crayola
