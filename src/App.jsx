@@ -68,12 +68,12 @@ function App() {
 
 	return (
 		<>
-    			<ParticleBackground />
 			<div
-				className=' mx-auto h-screen  
+				className='h-screen mx-auto  
     bg-gradient-to-b from-french-blue to-cerulean-crayola
     grid place-content-center font-sans text-cultured'
 			>
+      <ParticleBackground />
 				<Game
 					randomDog={randomDog}
 					shuffledAnswers={shuffledAnswers}
